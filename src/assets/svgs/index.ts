@@ -1,0 +1,12 @@
+export {default as GBP} from './GBP.svg';
+export {default as EUR} from './EUR.svg';
+export {default as USD} from './USD.svg';
+export {default as CAD} from './CAD.svg';
+export {default as JPY} from './JPY.svg';
+export {default as NZD} from './NZD.svg';
+export {default as THB} from './THB.svg';
+export {default as CNY} from './CNY.svg';
+export {default as AUD} from './AUD.svg';
+export {default as CHF} from './CHF.svg';
+export {default as ZAR} from './ZAR.svg';
+export {default as SwapFrom} from './SwapFrom.svg';
