@@ -8,45 +8,30 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+To start Metro, run the following command from the _root_ of the React Native project:
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
+# using Yarn
 yarn start
 ```
 
 ## Step 2: Start your Application
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of the React Native project. Run the following command to start our _iOS_ app:
 
 ### For iOS
 
 ```bash
-# using npm
-npm run ios
-
-# OR using Yarn
+# using Yarn
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _iOS Simulator_ shortly.
-
-This is one way to run your app — you can also run it directly from within Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
+You should see the new app running in your _iOS Simulator_ shortly.
+You can also run it directly from within Xcode.
 
 
 ## Congratulations! :tada:
 
 You've successfully run the App. :partying_face:
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
 # converter
