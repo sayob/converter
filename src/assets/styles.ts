@@ -137,4 +137,8 @@ export const styles = StyleSheet.create({
     width: 300,
     height: 60,
   },
+  errorText: {
+    color: 'red',
+    paddingVertical: 3,
+  },
 });

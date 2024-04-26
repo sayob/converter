@@ -4,6 +4,11 @@ export const parseNumber = (value: number) => {
   return value.toFixed(2);
 };
 
+export const validNumber = (text: string) => {
+  var filter = /^\d+(\.\d+)?$/;
+  return String(text).search(filter) != -1;
+};
+
 export const saveAppScreenState = (items: Record<string, string>) => {
   RNSecureStorage.multiSet(items, {accessible: ACCESSIBLE.WHEN_UNLOCKED})
     .then(res => {

@@ -14,6 +14,7 @@ import {SwapFrom} from '../assets/svgs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   parseNumber,
+  validNumber,
   retrieveLastCurrency,
   saveAppScreenState,
 } from '../others/helpers';
@@ -36,6 +37,8 @@ function ConvertScreen(): React.JSX.Element {
   const [fromAmount, setFromAmount] = useState<string>('');
   const [toAmount, setToAmount] = useState<string>('');
   const [conversionRate, setConversionRate] = useState<number>(0);
+  const [fromInputError, setFromInputError] = useState<string>('');
+  const [toInputError, setToInputError] = useState<string>('');
 
   useEffect(() => {
     getCurrencies(fromCurrency);
@@ -84,29 +87,40 @@ function ConvertScreen(): React.JSX.Element {
 
   const onFromCurrencyChangeText = (value: string): void => {
     setFromAmount(value);
-
-    let converted = Number(value) * conversionRate;
-    let toAmt = 0;
-
-    if (toCurrency === 'JPY') {
-      toAmt = Math.round(converted);
+    if (!validNumber(value)) {
+      setFromInputError('Invalid number');
+      setToAmount('');
     } else {
-      toAmt = converted.toFixed(2);
+      setFromInputError('');
+      let converted = Number(value) * conversionRate;
+      let toAmt = 0;
+
+      if (toCurrency === 'JPY') {
+        toAmt = Math.ceil(converted);
+      } else {
+        toAmt = converted.toFixed(2);
+      }
+      setToAmount(toAmt.toString());
     }
-    setToAmount(toAmt.toString());
   };
 
   const onToCurrencyChangeText = (value: string): void => {
     setToAmount(value);
-    let converted = Number(value) / conversionRate;
-    let fromAmt = 0;
-
-    if (toCurrency === 'JPY') {
-      fromAmt = Math.round(converted);
+    if (!validNumber(value)) {
+      setToInputError('Invalid number');
+      setFromAmount('');
     } else {
-      fromAmt = converted.toFixed(2);
+      setToInputError('');
+      let converted = Number(value) / conversionRate;
+      let fromAmt = 0;
+
+      if (fromCurrency === 'JPY') {
+        fromAmt = Math.ceil(converted);
+      } else {
+        fromAmt = converted.toFixed(2);
+      }
+      setFromAmount(fromAmt.toString());
     }
-    setFromAmount(fromAmt.toString());
   };
 
   const onFromCurrencySelectEvent = (item: CurrencyData): void => {
@@ -171,6 +185,7 @@ function ConvertScreen(): React.JSX.Element {
                 keyboardType="numeric"
               />
             </View>
+            <Text style={styles.errorText}>{fromInputError}</Text>
           </View>
           <View testID="bottomView" style={styles.bottomView}>
             <View testID="unitConversionView">
@@ -204,6 +219,7 @@ function ConvertScreen(): React.JSX.Element {
                 keyboardType="numeric"
               />
             </View>
+            <Text style={styles.errorText}>{toInputError}</Text>
           </View>
         </View>
       </ScrollView>
